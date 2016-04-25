@@ -1,0 +1,7 @@
+---
+title: "Food Journal Report"
+author: "Dustin L. Hodge"
+date: "April 25, 2016"
+output: html_document
+---
+
