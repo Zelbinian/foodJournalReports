@@ -1,7 +1,20 @@
 ---
 title: "Food Journal Report"
 author: "Dustin L. Hodge"
-date: "April 25, 2016"
 output: html_document
 ---
 
+```{r library loading, echo=FALSE, results=FALSE, cache=TRUE}
+
+# checking for required packages, installing if necessary
+reqPackages <- c("googlesheets", "magrittr", "dplyr", "httpuv")
+newPackages <- reqPackages[!(reqPackages %in% installed.packages()[,"Package"])]
+if(length(newPackages)) install.packages(newPackages)
+
+# this script makes use of 3 packages
+
+suppressMessages(library(dplyr))
+suppressMessages(library(googlesheets))
+suppressMessages(library(httpuv))
+
+```
