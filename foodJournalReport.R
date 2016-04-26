@@ -1,10 +1,4 @@
----
-title: "Food Journal Report"
-author: "Dustin L. Hodge"
-output: html_document
----
-
-```{r setup, echo=FALSE, results=FALSE, cache=TRUE}
+#----------------------------------------------------------------------------- SETUP -
 
 # checking for required packages, installing if necessary
 reqPackages <- c("googlesheets", "magrittr", "dplyr", "httpuv", "lubridate")
@@ -22,7 +16,3 @@ rm(reqPackages, newPackages)
 # registering the Google Sheet we would like to work with and pulling the data
 
 journalData <- gs_title("Food Journal (Responses)") %>% gs_read(col_names = FALSE)
-
-```
-
-# Eating Activity for the week of `r today()` through `r today() - 7`
