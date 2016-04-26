@@ -24,3 +24,5 @@ rm(reqPackages, newPackages)
 journalData <- gs_title("Food Journal (Responses)") %>% gs_read(col_names = FALSE)
 
 ```
+
+# Eating Activity for the week of `r today()` through `r today() - 7`
