@@ -7,19 +7,17 @@ output: html_document
 ```{r setup, echo=FALSE, results=FALSE, cache=TRUE}
 
 # checking for required packages, installing if necessary
-reqPackages <- c("googlesheets", "magrittr", "dplyr", "httpuv")
+reqPackages <- c("googlesheets", "magrittr", "dplyr", "httpuv", "lubridate")
 newPackages <- reqPackages[!(reqPackages %in% installed.packages()[,"Package"])]
 if(length(newPackages)) install.packages(newPackages)
+
+# load the required packages
+
+invisible(sapply(reqPackages, library, character.only = TRUE))
 
 # clean up variables used to load packages
 
 rm(reqPackages, newPackages)
-
-# this script makes use of 3 packages that must be explicitly loaded
-
-suppressMessages(library(dplyr))
-suppressMessages(library(googlesheets))
-suppressMessages(library(httpuv))
 
 # registering the Google Sheet we would like to work with and pulling the data
 
