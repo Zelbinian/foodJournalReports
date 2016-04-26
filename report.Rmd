@@ -4,17 +4,25 @@ author: "Dustin L. Hodge"
 output: html_document
 ---
 
-```{r library loading, echo=FALSE, results=FALSE, cache=TRUE}
+```{r setup, echo=FALSE, results=FALSE, cache=TRUE}
 
 # checking for required packages, installing if necessary
 reqPackages <- c("googlesheets", "magrittr", "dplyr", "httpuv")
 newPackages <- reqPackages[!(reqPackages %in% installed.packages()[,"Package"])]
 if(length(newPackages)) install.packages(newPackages)
 
-# this script makes use of 3 packages
+# clean up variables used to load packages
+
+rm(reqPackages, newPackages)
+
+# this script makes use of 3 packages that must be explicitly loaded
 
 suppressMessages(library(dplyr))
 suppressMessages(library(googlesheets))
 suppressMessages(library(httpuv))
+
+# registering the Google Sheet we would like to work with and pulling the data
+
+journalData <- gs_title("Food Journal (Responses)") %>% gs_read(col_names = FALSE)
 
 ```
