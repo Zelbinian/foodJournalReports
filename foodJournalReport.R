@@ -15,9 +15,9 @@ rm(reqPackages, newPackages)
 
 # registering the Google Sheet we would like to work with and pulling the data
 
-journalData <- gs_title("Food Journal (Responses)") %>% gs_read(col_names = FALSE)
+journalData <- gs_title("Food Journal (Responses)") %>% gs_read()
 
 # now for the data munging to get things in a good state for graphing
 
 # selecting only the data we need
-journalData <- journalData[,c()]
+journalData <- journalData[,c(1,2,6,11)]
