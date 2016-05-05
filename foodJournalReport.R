@@ -48,3 +48,9 @@ journalData$date <- mdy(journalData$date)
 colnames(journalData)[3:4] <- c("hunger", "satiety")
 journalData[,3] <- sapply(journalData[,3], substr, start = 1, stop = 1)
 journalData[,4] <- sapply(journalData[,4], substr, start = 1, stop = 1)
+
+
+# --- SUBSETTING BY DATE ---
+# right now, this report will be run weekly, and we'll want to compare two weeks of data
+fortnight <- interval(today() -dweeks(2), today())
+journalData <- journalData[journalData$date %within% fortnight,]
