@@ -41,6 +41,6 @@ journalData$mealEnd <- hms(journalData$mealStart) + minutes(journalData$duration
 # --- HUNGER RATINGS ---
 
 # renaming the hunger columns and truncating just the number
-colnames(journalData)[]
+colnames(journalData)[3:4] <- c("hunger", "satiety")
 journalData[,3] <- sapply(journalData[,3], substr, start = 1, stop = 1)
 journalData[,4] <- sapply(journalData[,4], substr, start = 1, stop = 1)
