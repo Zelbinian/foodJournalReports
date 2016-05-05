@@ -38,6 +38,10 @@ journalData$duration[journalData$duration == "> 60 minutes"] <- 90
 # creating new mealend column
 journalData$mealEnd <- hms(journalData$mealStart) + minutes(journalData$duration)
 
+# normalizing the other date/time columns
+journalData$mealStart <- hms(journalData$mealStart)
+journalData$date <- mdy(journalData$date)
+
 # --- HUNGER RATINGS ---
 
 # renaming the hunger columns and truncating just the number
