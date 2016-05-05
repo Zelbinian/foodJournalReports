@@ -1,7 +1,7 @@
 #----------------------------------------------------------------------------- SETUP -
 
 # checking for required packages, installing if necessary
-reqPackages <- c("googlesheets", "magrittr", "dplyr", "httpuv", "lubridate")
+reqPackages <- c("googlesheets", "magrittr", "dplyr", "httpuv", "lubridate", "tidyr")
 newPackages <- reqPackages[!(reqPackages %in% installed.packages()[,"Package"])]
 if(length(newPackages)) install.packages(newPackages)
 
@@ -21,3 +21,6 @@ journalData <- gs_title("Food Journal (Responses)") %>% gs_read()
 
 # selecting only the data we need
 journalData <- journalData[,c(1,2,6,11)]
+
+# splitting timestamp into date and start times
+journalData <- journalData %>% separate(Timestamp, c("Date", "MealStart"), " ")
