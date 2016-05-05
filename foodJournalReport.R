@@ -28,3 +28,11 @@ journalData <- journalData %>% separate(Timestamp, c("Date", "MealStart"), " ")
 # truncating hunger ratings to just the number
 journalData[,3] <- sapply(journalData[,3], substr, start = 1, stop = 1)
 journalData[,4] <- sapply(journalData[,4], substr, start = 1, stop = 1)
+
+# converting duration to a factor variable
+colnames(journalData)[5] <- "duration" # for programmatic ease
+journalData$duration[journalData$duration == "< 15 minutes"] <- 15
+journalData$duration[journalData$duration == "15 - 30 minutes"] <- 30
+journalData$duration[journalData$duration == "31 - 45 minutes"] <- 45
+journalData$duration[journalData$duration == "46 - 60 minutes"] <- 60
+journalData$duration[journalData$duration == "> 60 minutes"] <- 90
