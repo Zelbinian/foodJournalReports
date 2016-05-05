@@ -1,7 +1,7 @@
 #----------------------------------------------------------------------------- SETUP -
 
 # checking for required packages, installing if necessary
-reqPackages <- c("googlesheets", "magrittr", "dplyr", "httpuv", "lubridate", "tidyr")
+reqPackages <- c("googlesheets", "magrittr", "dplyr", "httpuv", "lubridate", "tidyr", "ggplot2")
 newPackages <- reqPackages[!(reqPackages %in% installed.packages()[,"Package"])]
 if(length(newPackages)) install.packages(newPackages)
 
