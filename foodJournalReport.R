@@ -52,5 +52,9 @@ journalData[,4] <- sapply(journalData[,4], substr, start = 1, stop = 1)
 
 # --- SUBSETTING BY DATE ---
 # right now, this report will be run weekly, and we'll want to compare two weeks of data
-fortnight <- interval(today() -dweeks(2), today())
-journalData <- journalData[journalData$date %within% fortnight,]
+journalData <- journalData[journalData$date %within% interval(today() - dweeks(2), today()),]
+
+lastWeekJournalData <- journalData[journalData$date %within% 
+                                       interval(today() - dweeks(1), today()),]
+prevWeekJournalData <- journalData[journalData$date %within% 
+                                       interval(today() - dweeks(2), today() - dweeks(1)),]
