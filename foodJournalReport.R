@@ -23,11 +23,7 @@ journalData <- gs_title("Food Journal (Responses)") %>% gs_read()
 journalData <- journalData[,c(1,2,6,11)]
 
 # splitting timestamp into date and start times
-journalData <- journalData %>% separate(Timestamp, c("Date", "MealStart"), " ")
-
-# truncating hunger ratings to just the number
-journalData[,3] <- sapply(journalData[,3], substr, start = 1, stop = 1)
-journalData[,4] <- sapply(journalData[,4], substr, start = 1, stop = 1)
+journalData <- journalData %>% separate(Timestamp, c("date", "mealStart"), " ")
 
 # converting duration to a factor variable
 colnames(journalData)[5] <- "duration" # for programmatic ease
@@ -38,4 +34,8 @@ journalData$duration[journalData$duration == "46 - 60 minutes"] <- 60
 journalData$duration[journalData$duration == "> 60 minutes"] <- 90
 
 # creating new mealend column
-journalData$MealEnd <- hms(journalData$MealStart) + minutes(journalData$duration)
+journalData$mealEnd <- hms(journalData$mealStart) + minutes(journalData$duration)
+
+# truncating hunger ratings to just the number
+journalData[,3] <- sapply(journalData[,3], substr, start = 1, stop = 1)
+journalData[,4] <- sapply(journalData[,4], substr, start = 1, stop = 1)
