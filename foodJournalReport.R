@@ -58,3 +58,6 @@ lastWeekJournalData <- journalData[journalData$date %within%
                                        interval(today() - dweeks(1), today()),]
 prevWeekJournalData <- journalData[journalData$date %within% 
                                        interval(today() - dweeks(2), today() - dweeks(1)),]
+
+# --- PRODUCING PLOTS ---
+
