@@ -36,3 +36,6 @@ journalData$duration[journalData$duration == "15 - 30 minutes"] <- 30
 journalData$duration[journalData$duration == "31 - 45 minutes"] <- 45
 journalData$duration[journalData$duration == "46 - 60 minutes"] <- 60
 journalData$duration[journalData$duration == "> 60 minutes"] <- 90
+
+# creating new mealend column
+journalData$MealEnd <- hms(journalData$MealStart) + minutes(journalData$duration)
